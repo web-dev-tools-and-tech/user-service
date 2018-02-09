@@ -1,0 +1,50 @@
+{
+  "name": "@web-dev-tools-and-tech/user-service",
+  "version": "1.0.1",
+  "description": "",
+  "main": "src/user-service.js",
+  "files": [
+    "helm",
+    "src",
+    "scripts"
+  ],
+  "bin": {
+    "run-user-service": "scripts/run-user-service.js"
+  },
+  "scripts": {
+    "test": "mocha --no-timeouts 'test/unit/*.test.js' 'test/it/*.test.js' 'test/e2e/*.test.js' && npm run eslint",
+    "eslint": "eslint '**/*.js'",
+    "start": "scripts/run-user-service.js",
+    "build": ":",
+    "postbuild": "npm run build:docker",
+    "build:docker": "docker build -t webdevtoolsandtech/user-service .",
+    "publish:docker": "docker tag webdevtoolsandtech/user-service webdevtoolsandtech/user-service:${npm_package_version} && docker push webdevtoolsandtech/user-service:${npm_package_version} && docker push web-dev-tools-and-tech/user-service:latest",
+    "prepublishOnly": "npm version patch",
+    "postpublish": "npm run publish:docker"
+  },
+  "author": "Gil Tayar <gil@tayar.org>",
+  "license": "Unlicense",
+  "repository": {
+    "url": "https://github.com/giltayar/web-dev-tools-and-tech",
+    "type": "git"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
+    "redis": "^2.8.0",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "@web-dev-tools-and-tech/docker-compose-testkit": "^1.0.0",
+    "@web-dev-tools-and-tech/rendering-grid-deployment": "*",
+    "chai": "^4.1.2",
+    "docker-compose-mocha": "^1.1.0",
+    "eslint": "^4.2.0",
+    "eslint-plugin-mocha-no-only": "0.0.5",
+    "eslint-plugin-prettier": "^2.1.2",
+    "mocha": "^4.0.1",
+    "prettier": "^1.5.2"
+  }
+}
