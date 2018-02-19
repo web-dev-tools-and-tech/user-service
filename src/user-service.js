@@ -138,7 +138,7 @@ function createApp({redisAddress}) {
 
   async function getUserKey(category, id) {
     const client = await redisClient()
-
+    
     return JSON.parse(await p(client.get.bind(client))(`user:${category}:${id}`))
   }
 }
