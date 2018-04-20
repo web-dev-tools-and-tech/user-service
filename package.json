@@ -1,6 +1,6 @@
 {
   "name": "@web-dev-tools-and-tech/user-service",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "src/user-service.js",
   "files": [
