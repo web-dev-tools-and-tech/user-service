@@ -18,7 +18,7 @@
     "build": ":",
     "postbuild": "npm run build:docker",
     "build:docker": "docker build -t webdevtoolsandtech/user-service .",
-    "publish:docker": "docker tag webdevtoolsandtech/user-service webdevtoolsandtech/user-service:${npm_package_version} && docker push webdevtoolsandtech/user-service:${npm_package_version} && docker push web-dev-tools-and-tech/user-service:latest",
+    "publish:docker": "docker tag webdevtoolsandtech/user-service webdevtoolsandtech/user-service:${npm_package_version} && docker push webdevtoolsandtech/user-service:${npm_package_version} && docker push webdevtoolsandtech/user-service:latest",
     "prepublishOnly": "npm version patch",
     "postpublish": "npm run publish:docker"
   },
